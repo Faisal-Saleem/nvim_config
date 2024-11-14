@@ -1,8 +1,4 @@
-vim.cmd("set expandtab")
-vim.cmd("set softtabstop=5")
-vim.cmd("set shiftwidth=5")
-vim.cmd("set number")
-vim.cmd("set nowrap")
+
 
 vim.g.mapleader = " "
 
@@ -43,7 +39,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-local plugins = {
+require("lazy").setup({
      { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
      { 'sainnhe/gruvbox-material', lazy = false },
      { 'sainnhe/everforest', lazy = false },
@@ -63,30 +59,38 @@ local plugins = {
      { 'HiPhish/rainbow-delimiters.nvim' },
      { 'lukas-reineke/lsp-format.nvim' }
 }
-
-require("lazy").setup(plugins, {})
+, {})
 
 local builtin = require("telescope.builtin")
+
+
+local config = require("nvim-treesitter.configs")
+
+config.setup({
+     ensure_installed = { 'lua','javascript','c_sharp','c','html','sql','java','bash','dart','cmake','cpp','css','csv','diff','git_config','git_rebase','gitattributes','gitcommit','gitignore','http','json','json5','make','markdown','markdown_inline','php','powershell','python','regex','sql','tcl','tmux','vim','yaml' },
+     highlight = { enable = true },
+     indent = { enable = true },
+     rainbow = { enable = true }
+})
+require("telescope.builtin")
+require('lualine').setup()
+require('mason').setup()
+require('bufferline').setup()
+require('which-key')
+require('lsp-format').setup() 
+
+vim.cmd("set expandtab")
+vim.cmd("set softtabstop=5")
+vim.cmd("set shiftwidth=5")
+vim.cmd("set number")
+vim.cmd("set nowrap")
+
 vim.keymap.set('n','<C-f>', builtin.find_files, {})
 vim.keymap.set('n','<C-g>', builtin.live_grep, {})
 vim.keymap.set('n','<C-e>',':Neotree filesystem reveal left<CR>', {})
 vim.keymap.set('n','<C-t>',':Neotree toggle<CR>', {})
 vim.keymap.set('n','<S-Tab>',':BufferLineCyclePrev<CR>',{})
 vim.keymap.set('n','<Tab>',':BufferLineCycleNext<CR>', {})
-
-local config = require("nvim-treesitter.configs")
-config.setup({
-     ensure_installed = { 'lua','javascript','c_sharp','c','html','sql','java','bash','dart','cmake','cpp','css','csv','diff','git_config','git_rebase','gitattributes','gitcommit','gitignore','http','json','json5','make','markdown','arkdown_inline','php','powershell','python','regex','sql','tcl','tmux','vim','yaml' },
-     highlight = { enable = true },
-     indent = { enable = true },
-     rainbow = { enable = true }
-})
-
-require('lualine').setup()
-require('mason').setup()
-require('bufferline').setup()
-require('which-key')
-require('lsp-format').setup() 
 
 vim.cmd.colorscheme "solarized"
 vim.o.background = "light"
