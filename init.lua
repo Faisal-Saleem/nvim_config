@@ -45,61 +45,34 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-     {
-          "catppuccin/nvim",
-          name = "catppuccin",
-          priority = 1000
-     },
-     {
-          "sainnhe/gruvbox-material",
-          lazy = false
-     },
-     {
-          "sainnhe/everforest",
-          lazy = false
-     },
-     {
-          "projekt0n/github-nvim-theme",
-          name = "github-theme"
-     },
-	{
-          "nvim-telescope/telescope.nvim",
-          tag="0.1.8",
-          dependencies = {
-               "nvim-lua/plenary.nvim"
-          }
-     },
-     {
-          "nvim-treesitter/nvim-treesitter", 
-          build = ":TSUpdate"
-     },
-     {
-          "nvim-neo-tree/neo-tree.nvim",
-          branch = "v3.x",
-          dependencies = { 
-               "nvim-lua/plenary.nvim",
-               "nvim-tree/nvim-web-devicons", 
-               "MunifTanjim/nui.nvim"
-          }
-     },
-     {
-          "nvim-lualine/lualine.nvim",
-          dependencies = { 
-               "nvim-tree/nvim-web-devicons" 
-          }
-     },
-     {
-          "williamboman/mason.nvim"
-     }
+     { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
+     { 'sainnhe/gruvbox-material', lazy = false },
+     { 'sainnhe/everforest', lazy = false },
+     { 'projekt0n/github-nvim-theme', name = 'github-theme' }, 
+     { 'maxmx03/solarized.nvim', lazy = false },
+     { 'nvim-telescope/telescope.nvim', tag='0.1.8', dependencies = { 'nvim-lua/plenary.nvim' }},
+     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+     { 'nvim-neo-tree/neo-tree.nvim', branch = "v3.x", dependencies = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons', 'MunifTanjim/nui.nvim' }},
+     { 'nvim-lualine/lualine.nvim',dependencies = { 'nvim-tree/nvim-web-devicons' }},
+     { 'kristijanhusak/vim-dadbod-ui',dependencies = {{ "tpope/vim-dadbod", lazy = true }, { 'kristijanhusak/vim-dadbod-completion',ft = { "sql","mysql","plsql" },lazy = true }}},
+     { 'williamboman/mason.nvim' },
+     { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
+     { 'sindrets/diffview.nvim' },
+     { 'folke/which-key.nvim' },
+     { 'echasnovski/mini.nvim', version = '*' },
+     { 'vhyrro/luarocks.nvim', priority = 1000, config = true },
+     { 'HiPhish/rainbow-delimiters.nvim' }
 }
 
-local opts = {}
-require("lazy").setup(plugins, opts)
+require("lazy").setup(plugins, {})
 
 local builtin = require("telescope.builtin")
 vim.keymap.set('n','<C-f>', builtin.find_files, {})
 vim.keymap.set('n','<C-g>', builtin.live_grep, {})
 vim.keymap.set('n','<C-e>',':Neotree filesystem reveal left<CR>', {})
+vim.keymap.set('n','<C-t>',':Neotree toggle<CR>', {})
+vim.keymap.set('n','<S-Tab>',':BufferLineCyclePrev<CR>',{})
+vim.keymap.set('n','<Tab>',':BufferLineCycleNext<CR>', {})
 
 local config = require("nvim-treesitter.configs")
 config.setup({
@@ -144,25 +117,23 @@ config.setup({
      },
      indent = {
           enable = true
+     },
+     rainbow = {
+          enable = true
      }
 })
 
-require("lualine").setup({
-     options = {
-          theme = 'dracula'
-     }
-})
-
+require("lualine").setup()
 require("mason").setup()
-
+require("bufferline").setup()
 -- Avaliable Color Schemes
 -- 1. catppuccin
 -- 2. gruvbox-material
 -- 3. everforest
 -- 4. github-theme
+-- 5. solarized *
 
-vim.cmd.colorscheme "catppuccin"
---vim.o.background = "light"
---require("catppuccin").setup()
---vim.g.gruvbox_material_background = "hard"
---vim.cmd("colorscheme gruvbox-material")
+vim.cmd.colorscheme "solarized"
+vim.o.background = "light"
+vim.opt.termguicolors = true
+vim.opt.laststatus = 3
