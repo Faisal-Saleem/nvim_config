@@ -76,51 +76,10 @@ vim.keymap.set('n','<Tab>',':BufferLineCycleNext<CR>', {})
 
 local config = require("nvim-treesitter.configs")
 config.setup({
-     ensure_installed = {
-          "lua",
-          "javascript",
-          "c_sharp",
-          "c",
-          "html",
-          "sql",
-          "java",
-          "bash",
-          "dart",
-          "cmake",
-          "cpp",
-          "css",
-          "csv",
-          "diff",
-          "git_config",
-          "git_rebase",
-          "gitattributes",
-          "gitcommit",
-          "gitignore",
-          "http",
-          "json",
-          "json5",
-          "make",
-          "markdown",
-          "markdown_inline",
-          "php",
-          "powershell",
-          "python",
-          "regex",
-          "sql",
-          "tcl",
-          "tmux",
-          "vim",
-          "yaml"
-     },
-     highlight = {
-          enable = true
-     },
-     indent = {
-          enable = true
-     },
-     rainbow = {
-          enable = true
-     }
+     ensure_installed = { 'lua','javascript','c_sharp','c','html','sql','java','bash','dart','cmake','cpp','css','csv','diff','git_config','git_rebase','gitattributes','gitcommit','gitignore','http','json','json5','make','markdown','arkdown_inline','php','powershell','python','regex','sql','tcl','tmux','vim','yaml' },
+     highlight = { enable = true },
+     indent = { enable = true },
+     rainbow = { enable = true }
 })
 
 require('lualine').setup()
@@ -128,13 +87,6 @@ require('mason').setup()
 require('bufferline').setup()
 require('which-key')
 require('lsp-format').setup() 
-
--- Avaliable Color Schemes
--- 1. catppuccin
--- 2. gruvbox-material
--- 3. everforest
--- 4. github-theme
--- 5. solarized *
 
 vim.cmd.colorscheme "solarized"
 vim.o.background = "light"
