@@ -1,5 +1,4 @@
 vim.cmd("set expandtab")
-vim.cmd("set tabstop=5")
 vim.cmd("set softtabstop=5")
 vim.cmd("set shiftwidth=5")
 vim.cmd("set number")
@@ -61,7 +60,8 @@ local plugins = {
      { 'folke/which-key.nvim' },
      { 'echasnovski/mini.nvim', version = '*' },
      { 'vhyrro/luarocks.nvim', priority = 1000, config = true },
-     { 'HiPhish/rainbow-delimiters.nvim' }
+     { 'HiPhish/rainbow-delimiters.nvim' },
+     { 'lukas-reineke/lsp-format.nvim' }
 }
 
 require("lazy").setup(plugins, {})
@@ -123,9 +123,12 @@ config.setup({
      }
 })
 
-require("lualine").setup()
-require("mason").setup()
-require("bufferline").setup()
+require('lualine').setup()
+require('mason').setup()
+require('bufferline').setup()
+require('which-key')
+require('lsp-format').setup() 
+
 -- Avaliable Color Schemes
 -- 1. catppuccin
 -- 2. gruvbox-material
