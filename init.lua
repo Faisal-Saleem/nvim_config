@@ -26,11 +26,13 @@ vim.keymap.set('v','K',":m '<-2<CR>gv=gv")
 
 vim.g.mapleader = " "
 
-vim.o.background = "light"
+-- vim.o.background = "light"
 
 vim.opt.termguicolors = true
-vim.opt.laststatus = 2
+vim.opt.laststatus = 3
 vim.opt.swapfile = false
 vim.opt.backup = false
 
 require('lazy').setup('plugins')
+
+vim.cmd.colorscheme "catppuccin"
