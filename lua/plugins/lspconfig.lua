@@ -23,7 +23,7 @@ return {
             if os_name == "Windows_NT" then
                 omnisharp_cmd = 'C:\\omnisharp\\omnisharp.exe' -- Path for Windows
             else
-                omnisharp_cmd = '/mnt/c/omnisharp-linux-x64/omnisharp/run' -- Path for Linux
+                omnisharp_cmd = '/mnt/c/omnisharp-linux-x64/omnisharp/omnisharp.exe' -- Path for Linux
             end
             lspconfig.luau_lsp.setup({})
             lspconfig.omnisharp.setup({
