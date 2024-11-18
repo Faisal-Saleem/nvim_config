@@ -15,6 +15,10 @@ return {
     },
     {
         'neovim/nvim-lspconfig',
+        dependencies = {
+            "hrsh7th/nvim-cmp",
+            "hrsh7th/cmp-nvim-lsp",
+        },
         config = function()
             local lspconfig = require('lspconfig')
             local os_name = vim.loop.os_uname().sysname
