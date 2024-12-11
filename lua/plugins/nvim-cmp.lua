@@ -15,12 +15,11 @@ return {
 						vim.fn["vsnip#anonymous"](args.body)
 					end,
 				},
-				mp
 				mapping = {
 					["<Tab>"] = cmp.mapping.select_next_item(),
 					["<S-Tab>"] = cmp.mapping.select_prev_item(),
-					["<CR>"] = cmp.mapping.confirm({ select = true })
-					["<C-Space>"] = cmp.mapping.complete(),
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<C-Space>"] = cmp.mapping.complete()
 				},
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
