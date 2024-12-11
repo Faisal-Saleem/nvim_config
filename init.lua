@@ -52,5 +52,5 @@ vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "Previe
 vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>", { desc = "Move to next tab" })
 vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { desc = "Move to previous tab" })
 vim.keymap.set("n", "<C-X>", ":bd<CR>", { desc = "Close tab" })
-vim.keymap.set("n", "<C-t>", ":Neotree toggle<CR>", { desc = "Toggle explorer" })
+vim.keymap.set("n", "<C-e>", ":Neotree toggle<CR>", { desc = "Toggle explorer" })
 vim.keymap.set("n", "<C-r>", ":Neotree filesystem reveal left<CR>", { desc = "Reveal file in explorer" })

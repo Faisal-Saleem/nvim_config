@@ -15,15 +15,18 @@ return {
 						vim.fn["vsnip#anonymous"](args.body)
 					end,
 				},
+				mp
 				mapping = {
+					["<Tab>"] = cmp.mapping.select_next_item(),
+					["<S-Tab>"] = cmp.mapping.select_prev_item(),
+					["<CR>"] = cmp.mapping.confirm({ select = true })
 					["<C-Space>"] = cmp.mapping.complete(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
-					["<C-e>"] = cmp.mapping.abort(),
 				},
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
 					{ name = "buffer" },
 					{ name = "path" },
+					{ name = "vim-dadbod-completion" }
 				}),
 			})
 		end,
